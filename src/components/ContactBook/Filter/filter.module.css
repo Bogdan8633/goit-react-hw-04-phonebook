@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 30px;
+}

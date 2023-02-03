@@ -1,0 +1,17 @@
+.item {
+  display: flex;
+  width: 350px;
+  align-items: center;
+}
+
+.name {
+  margin-right: 10px;
+}
+
+.number {
+  margin-right: auto;
+}
+
+.deleteBtn {
+  cursor: pointer;
+}
