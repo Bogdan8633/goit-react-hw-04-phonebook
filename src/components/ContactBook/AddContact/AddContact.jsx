@@ -19,7 +19,7 @@ const AddContact = ({ onSubmit }) => {
 
   const handleSubmt = e => {
     e.preventDefault();
-    const result = onSubmit({ name, number });
+    const result = onSubmit({ ...state });
     if (result) {
       reset();
     }
