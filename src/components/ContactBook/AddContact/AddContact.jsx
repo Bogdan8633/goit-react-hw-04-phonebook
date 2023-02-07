@@ -4,34 +4,47 @@ import PropTypes from 'prop-types';
 import styles from './addContact.module.css';
 
 const AddContact = ({ onSubmit }) => {
-  const [state, setState] = useState({ name: '', number: '' });
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setState(prevState => {
-      return { ...prevState, [name]: value };
-    });
-  };
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
+  // const [state, setState] = useState({ name: '', number: '' });
 
   const reset = () => {
-    setState({ name: '', number: '' });
+    setName('');
+    setNumber('');
+    // setState({ name: '', number: '' });
   };
 
   const handleSubmt = e => {
     e.preventDefault();
-    const result = onSubmit({ ...state });
+    const result = onSubmit({ name, number });
     if (result) {
       reset();
     }
   };
 
-  const { name, number } = state;
+  // const handleSubmt = e => {
+  //   e.preventDefault();
+  //   const result = onSubmit({ ...state });
+  //   if (result) {
+  //     reset();
+  //   }
+  // };
+
+  // const handleChange = e => {
+  //   const { name, value } = e.target;
+  //   setState(prevState => {
+  //     return { ...prevState, [name]: value };
+  //   });
+  // };
+
+  // const { name, number } = state;
 
   return (
     <form onSubmit={handleSubmt} className={styles.form}>
       <input
         value={name}
-        onChange={handleChange}
+        onChange={({ target }) => setName(target.value)}
+        // onChange={handleChange}
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -40,7 +53,8 @@ const AddContact = ({ onSubmit }) => {
       />
       <input
         value={number}
-        onChange={handleChange}
+        // onChange={handleChange}
+        onChange={({ target }) => setNumber(target.value)}
         type="tel"
         name="number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
